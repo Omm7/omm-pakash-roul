@@ -1,0 +1,60 @@
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--accent-primary, #3b82f6) 0%, 
+    var(--accent-secondary, #8b5cf6) 50%,
+    var(--accent-primary, #3b82f6) 100%);
+  transform-origin: 0%;
+  z-index: var(--z-fixed, 1200);
+  box-shadow: 0 0 10px var(--accent-primary, #3b82f6);
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-primary, #3b82f6);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  z-index: var(--z-fixed, 1200);
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.5);
+  background: var(--accent-secondary, #8b5cf6);
+}
+
+.scroll-to-top svg {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}

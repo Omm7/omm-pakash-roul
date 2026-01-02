@@ -1,0 +1,340 @@
+/* ============================================================================
+   INTERACTIVE TERMINAL - Exact macOS Terminal Design
+   ============================================================================ */
+
+.interactive-terminal {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  background: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 0.5px rgba(255, 255, 255, 0.1);
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* === TERMINAL HEADER === */
+.terminal-header {
+  background: rgba(50, 50, 50, 0.98);
+  padding: 11px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: none;
+  position: relative;
+  backdrop-filter: blur(40px) saturate(180%);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: none;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  box-shadow: none;
+}
+
+.terminal-button.close {
+  background: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background: #27c93f;
+}
+
+.terminal-button:hover {
+  opacity: 0.85;
+}
+
+.terminal-button:active {
+  opacity: 0.7;
+}
+
+.terminal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  user-select: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* === TERMINAL BODY === */
+.terminal-body {
+  background: #000000;
+  padding: 24px;
+  min-height: 1400px;
+  max-height: 1600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: text;
+  color: #f5f5f5;
+  font-weight: 400;
+  letter-spacing: 0px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 11px;
+  background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: 3px solid #000000;
+  transition: opacity 0.3s ease;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.terminal-body:not(:hover)::-webkit-scrollbar-thumb {
+  opacity: 0;
+}
+
+/* === TERMINAL LINES === */
+.terminal-line {
+  margin-bottom: 0;
+  animation: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terminal-line pre {
+  margin: 0;
+  font-family: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Terminal line types */
+.terminal-system {
+  color: #d4d4d4;
+  font-weight: 400;
+}
+
+.terminal-input {
+  color: #f5f5f5;
+  font-weight: 400;
+}
+
+.terminal-success {
+  color: #5af78e;
+  font-weight: 400;
+}
+
+.terminal-error {
+  color: #ff6188;
+  font-weight: 400;
+}
+
+.terminal-info {
+  color: #d4d4d4;
+  font-weight: 400;
+}
+
+.terminal-command {
+  color: #ffd866;
+  font-weight: 500;
+}
+
+/* === INPUT LINE === */
+.terminal-input-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  position: relative;
+}
+
+.terminal-prompt {
+  color: #5af78e;
+  font-weight: 400;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f5f5f5;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: transparent;
+  padding: 0;
+  font-weight: 400;
+}
+
+.terminal-input::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
+
+.terminal-cursor {
+  position: absolute;
+  right: 0;
+  width: 7px;
+  height: 15px;
+  background: #f5f5f5;
+  animation: blink 1.2s step-end infinite;
+  pointer-events: none;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1200px) {
+  .terminal-body {
+    min-height: 1100px;
+    max-height: 1400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .interactive-terminal {
+    border-radius: 8px;
+  }
+
+  .terminal-body {
+    padding: 16px;
+    min-height: 800px;
+    max-height: 1000px;
+    font-size: 12px;
+  }
+
+  .terminal-title {
+    font-size: 12px;
+  }
+
+  .terminal-header {
+    padding: 10px 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .interactive-terminal {
+    border-radius: 6px;
+  }
+
+  .terminal-header {
+    padding: 9px 10px;
+  }
+
+  .terminal-button {
+    width: 11px;
+    height: 11px;
+  }
+
+  .terminal-buttons {
+    gap: 7px;
+  }
+
+  .terminal-body {
+    padding: 14px;
+    min-height: 600px;
+    max-height: 800px;
+    font-size: 11px;
+  }
+
+  .terminal-title {
+    font-size: 11px;
+  }
+}
+
+/* === HOVER EFFECTS === */
+.interactive-terminal:hover {
+  box-shadow: 
+    0 25px 90px rgba(0, 0, 0, 0.6),
+    0 0 0 0.5px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(88, 166, 255, 0.15);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* === SELECTION STYLING === */
+.terminal-body ::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
+
+/* === TYPING INDICATOR === */
+.terminal-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.terminal-typing span {
+  width: 4px;
+  height: 4px;
+  background: #58a6ff;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.terminal-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.terminal-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}

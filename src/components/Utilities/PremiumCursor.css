@@ -1,0 +1,63 @@
+/* ============================================================================
+   PREMIUM CURSOR STYLES - MOUSE POINTER
+   Classic arrow cursor with modern styling and animations
+   ============================================================================ */
+
+/* Mouse pointer cursor */
+.cursor-pointer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999999;
+  will-change: transform;
+}
+
+/* SVG cursor styling */
+.cursor-svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 217, 255, 0.6))
+          drop-shadow(0 4px 16px rgba(0, 217, 255, 0.4))
+          drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
+  transition: filter 0.3s ease;
+}
+
+/* Hover state - enhanced glow */
+.cursor-svg.hovering {
+  filter: drop-shadow(0 2px 12px rgba(0, 255, 136, 0.8))
+          drop-shadow(0 4px 20px rgba(0, 255, 136, 0.5))
+          drop-shadow(0 0 30px rgba(0, 255, 136, 0.4));
+}
+
+/* Click state - intense glow */
+.cursor-svg.clicking {
+  filter: drop-shadow(0 2px 10px rgba(255, 100, 255, 0.9))
+          drop-shadow(0 4px 18px rgba(255, 100, 255, 0.6))
+          drop-shadow(0 0 25px rgba(255, 100, 255, 0.5));
+}
+
+/* Performance optimizations */
+.cursor-pointer {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Responsive - hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-pointer {
+    display: none !important;
+  }
+}
+
+/* Accessibility - respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-pointer {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .cursor-svg {
+    transition: none !important;
+  }
+}

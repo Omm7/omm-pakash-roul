@@ -1,0 +1,465 @@
+/* ============================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN
+   Enhanced media queries for all device types
+   ============================================================================ */
+
+/* === ROOT RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1440px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1280px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* === CONTAINER WIDTHS === */
+@media (min-width: 1920px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    max-width: 1400px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    max-width: 1200px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    max-width: 1100px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    max-width: 900px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    max-width: 100%;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .hero-container,
+  .about-container,
+  .skills-container,
+  .projects-container,
+  .experience-container,
+  .contact-container {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+}
+
+/* === SECTION SPACING === */
+@media (max-width: 1024px) {
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* === TYPOGRAPHY === */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+
+  .section-description {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+}
+
+/* === GRID LAYOUTS === */
+@media (max-width: 1280px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === BUTTONS === */
+@media (max-width: 768px) {
+  button,
+  .btn,
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  button,
+  .btn,
+  .cta-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* === IMAGES === */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* === MODALS & OVERLAYS === */
+@media (max-width: 768px) {
+  .modal,
+  .overlay,
+  .popup {
+    width: 95%;
+    max-width: 95%;
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal,
+  .overlay,
+  .popup {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}
+
+/* === CARDS === */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* === SPECIFIC COMPONENT FIXES === */
+
+/* Navigation */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
+/* Hero Section */
+@media (max-width: 1280px) {
+  .hero-section {
+    min-height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 80vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 90vh;
+    padding-top: 80px;
+  }
+}
+
+/* Skills Grid */
+@media (max-width: 1280px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Projects Grid */
+@media (max-width: 1440px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact Form */
+@media (max-width: 480px) {
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Footer */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+/* === LANDSCAPE ORIENTATION === */
+@media (max-height: 600px) and (orientation: landscape) {
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* === TABLET SPECIFIC === */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* === VERY SMALL MOBILE === */
+@media (max-width: 360px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  button,
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* === LARGE DESKTOP === */
+@media (min-width: 1920px) {
+  :root {
+    font-size: 18px;
+  }
+
+  section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .section-title {
+    font-size: 4rem;
+  }
+}
+
+/* === TOUCH DEVICE ENHANCEMENTS === */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button,
+  .btn,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Remove hover effects */
+  *:hover {
+    transition-duration: 0s;
+  }
+}
+
+/* === HIGH RESOLUTION DISPLAYS === */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

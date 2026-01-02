@@ -1,0 +1,29 @@
+{
+  "short_name": "Omm Prakash",
+  "name": "Omm Prakash Roul - Full Stack Developer Portfolio",
+  "description": "Professional portfolio of Omm Prakash Roul - Full Stack Developer specializing in Java, React, Node.js and Web Development",
+  "icons": [
+    {
+      "src": "/assets/op-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/op-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["portfolio", "developer", "technology", "software"],
+  "screenshots": []
+}

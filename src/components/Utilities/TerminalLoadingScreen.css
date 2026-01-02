@@ -1,0 +1,393 @@
+/* ============================================================================
+   TERMINAL LOADING SCREEN - Realistic Linux Hacking Style
+   ============================================================================ */
+
+.terminal-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', 'Courier New', monospace;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.terminal-loading-container {
+  width: 95%;
+  max-width: 1200px;
+  height: 90vh;
+  background: #000000;
+  border-radius: 8px;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminal-loading-header {
+  background: #1a1a1a;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 14px;
+}
+
+.terminal-user {
+  color: #5af78e;
+  font-weight: 600;
+}
+
+.terminal-separator {
+  color: #ffffff;
+}
+
+.terminal-path {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.terminal-prompt {
+  color: #ffffff;
+  margin-left: 4px;
+}
+
+.terminal-loading-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #f5f5f5;
+  font-size: 13px;
+  line-height: 1.6;
+  background: #000000;
+}
+
+.terminal-loading-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-loading-content::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.terminal-loading-content::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 5px;
+}
+
+.terminal-loading-content::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+.terminal-loading-line {
+  margin-bottom: 2px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  animation: lineAppear 0.2s ease-out;
+}
+
+@keyframes lineAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.terminal-loading-line:empty {
+  height: 1.6em;
+}
+
+/* Command styling */
+.terminal-loading-line:has-text("$") {
+  color: #5af78e;
+  font-weight: 600;
+}
+
+/* Typing animation */
+.terminal-loading-line.typing {
+  animation: none;
+  display: inline-block;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #5af78e;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: typingBlink 0.7s step-end infinite;
+}
+
+@keyframes typingBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #5af78e;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Download Progress Bar */
+.download-progress {
+  margin: 10px 0;
+  animation: fadeIn 0.3s ease-in;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+}
+
+.terminal-progress-text {
+  color: #5af78e;
+  font-size: 13px;
+  white-space: pre;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+
+/* Specific line colors */
+.terminal-loading-line:first-child {
+  color: #5af78e;
+}
+
+.terminal-loading-line {
+  color: #f5f5f5;
+}
+
+/* Success indicators */
+.terminal-loading-line:contains("✓") {
+  color: #5af78e;
+  font-weight: 600;
+}
+
+/* Error simulation (if needed) */
+.terminal-loading-line:contains("[ERROR]") {
+  color: #ff6188;
+}
+
+.terminal-loading-line:contains("[INFO]") {
+  color: #58a6ff;
+}
+
+.terminal-loading-line:contains("[SUCCESS]") {
+  color: #5af78e;
+}
+
+/* Fade out animation when complete */
+.terminal-loading-screen.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN - Mobile-First Approach
+   ============================================================================ */
+
+/* Tablet devices (portrait) */
+@media (max-width: 768px) {
+  .terminal-loading-container {
+    width: 98%;
+    height: 95vh;
+    border-radius: 6px;
+  }
+
+  .terminal-loading-content {
+    padding: 18px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .terminal-loading-header {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .terminal-progress-text {
+    font-size: 13px;
+  }
+
+  .typing-cursor,
+  .terminal-cursor {
+    width: 9px;
+    height: 15px;
+  }
+}
+
+/* Mobile devices (landscape and portrait) */
+@media (max-width: 640px) {
+  .terminal-loading-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .terminal-loading-content {
+    padding: 20px 16px;
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  .terminal-loading-header {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .terminal-loading-line {
+    margin-bottom: 4px;
+  }
+
+  .terminal-progress-text {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .typing-cursor,
+  .terminal-cursor {
+    width: 10px;
+    height: 16px;
+  }
+
+  .download-progress {
+    margin: 12px 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .terminal-loading-content {
+    padding: 24px 14px;
+    font-size: 16px;
+    line-height: 2.2;
+  }
+
+  .terminal-loading-header {
+    padding: 16px 14px;
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+
+  .terminal-loading-line {
+    margin-bottom: 6px;
+  }
+
+  .terminal-progress-text {
+    font-size: 14px;
+    letter-spacing: 1px;
+    word-break: break-all;
+  }
+
+  .typing-cursor,
+  .terminal-cursor {
+    width: 11px;
+    height: 18px;
+  }
+
+  .download-progress {
+    margin: 14px 0;
+  }
+
+  /* Better scrollbar for mobile */
+  .terminal-loading-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .terminal-loading-content::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 3px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .terminal-loading-content {
+    padding: 20px 12px;
+    font-size: 15px;
+    line-height: 2;
+  }
+
+  .terminal-loading-header {
+    padding: 14px 12px;
+    font-size: 14px;
+  }
+
+  .terminal-progress-text {
+    font-size: 13px;
+  }
+}
+
+/* Landscape orientation optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  .terminal-loading-container {
+    height: 100vh;
+  }
+
+  .terminal-loading-content {
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .terminal-loading-header {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .terminal-loading-line {
+    margin-bottom: 2px;
+  }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .terminal-loading-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
