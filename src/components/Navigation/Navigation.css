@@ -9,10 +9,13 @@
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: 100vw;
   z-index: 1000;
   padding: 1rem 0;
   transition: all 0.3s ease;
   background: transparent;
+  overflow-x: hidden;
 }
 
 .navigation-scrolled {
@@ -289,12 +292,31 @@
     display: flex;
   }
 
+  .navigation {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   .navigation-logo {
     font-size: 1.25rem;
   }
 
   .navigation-container {
     padding: 0 var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Ensure buttons stay within safe area */
+  .nav-actions {
+    padding-right: env(safe-area-inset-right, 0);
+    gap: var(--spacing-sm);
+  }
+
+  .nav-action-btn {
+    margin-right: 0;
   }
 }
 
