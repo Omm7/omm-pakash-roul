@@ -240,83 +240,124 @@
 
 @media (max-width: 768px) {
   .interactive-terminal {
-    border-radius: 10px;
-    max-width: 95%;
-  }
-
-  .terminal-body {
-    padding: 20px;
-    min-height: 500px;
-    max-height: 600px;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .terminal-title {
-    font-size: 13px;
+    width: 90%;
+    max-width: 90%;
+    height: 240px;
+    border-radius: 8px;
+    margin: 0 auto;
   }
 
   .terminal-header {
-    padding: 12px 14px;
+    padding: 10px 14px;
+  }
+
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+  }
+
+  .terminal-buttons {
+    gap: 6px;
+  }
+
+  .terminal-title {
+    display: none; /* Hide window size text on mobile */
+  }
+
+  .terminal-body {
+    padding: 16px 14px !important;
+    min-height: 200px !important;
+    max-height: 200px !important;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .terminal-output {
+    margin: 8px 0;
+  }
+
+  .terminal-input input {
+    font-size: 13px;
+    padding: 8px 0;
+  }
+
+  .terminal-prompt {
+    font-size: 13px;
+  }
+
+  /* Compact scrollbar for mobile */
+  .terminal-body::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .terminal-body::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 2px;
   }
 }
 
 @media (max-width: 640px) {
   .interactive-terminal {
+    width: 92%;
     max-width: 92%;
+    height: 230px;
   }
 
   .terminal-body {
-    padding: 22px 16px;
-    min-height: 450px;
-    max-height: 550px;
-    font-size: 15px;
-    line-height: 1.75;
+    padding: 14px 12px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .terminal-input input {
+    font-size: 14px;
+  }
+
+  .terminal-prompt {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .interactive-terminal {
-    border-radius: 8px;
-    width: 100%;
-    max-width: 340px;
-    height: auto;
+    width: 95%;
+    max-width: 95%;
+    height: 220px;
+    border-radius: 6px;
   }
 
   .terminal-header {
-    padding: 12px 16px;
+    padding: 8px 12px;
   }
 
   .terminal-button {
-    width: 11px;
-    height: 11px;
+    width: 9px;
+    height: 9px;
   }
 
   .terminal-buttons {
-    gap: 7px;
+    gap: 5px;
   }
 
   .terminal-body {
-    padding: 18px 16px;
-    min-height: 380px;
-    max-height: 450px;
+    padding: 12px 10px !important;
+    min-height: 180px !important;
+    max-height: 180px !important;
     font-size: 13px;
-    line-height: 1.7;
-    letter-spacing: 0.2px;
-    overflow-y: auto;
-  }
-
-  .terminal-title {
-    font-size: 12px;
+    line-height: 1.8;
   }
 
   .terminal-output {
-    margin: 12px 0;
+    margin: 6px 0;
   }
 
   .terminal-input input {
     font-size: 13px;
-    padding: 10px 0;
+    padding: 6px 0;
   }
 
   .terminal-prompt {

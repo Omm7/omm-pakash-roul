@@ -278,7 +278,7 @@ const InteractiveTerminal = () => {
           <span className="terminal-button minimize"></span>
           <span className="terminal-button maximize"></span>
         </div>
-        <div className="terminal-title" style={{ whiteSpace: 'nowrap' }}>portfolio-terminal — bash — 500×480</div>
+        <div className="terminal-title">portfolio-terminal — bash — 500×480</div>
       </div>
 
       {/* Terminal Body */}
@@ -286,12 +286,6 @@ const InteractiveTerminal = () => {
         className="terminal-body" 
         ref={terminalRef}
         onClick={handleTerminalClick}
-        style={{
-          minHeight: '480px',
-          maxHeight: '480px',
-          background: '#000000',
-          padding: '24px'
-        }}
       >
         <AnimatePresence>
           {history.map((item, index) => (
