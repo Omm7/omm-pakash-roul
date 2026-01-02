@@ -456,61 +456,113 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: var(--spacing-xl) 0 var(--spacing-2xl) 0;
+    padding: var(--spacing-2xl) 0;
     min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-content {
-    gap: var(--spacing-lg);
+    gap: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
   }
 
+  /* Hide terminal container on mobile - no gap */
   .hero-visual {
+    display: none !important;
+  }
+
+  .hero-text-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-greeting {
+    font-size: 1.125rem;
     margin-bottom: var(--spacing-md);
   }
 
   .hero-name {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .hero-role {
-    font-size: 1.25rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: var(--spacing-md);
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 2.75rem;
+    line-height: 1.1;
     margin-bottom: var(--spacing-lg);
   }
 
-  .hero-greeting {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-sm);
+  .hero-role {
+    font-size: 1.375rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-description {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
   }
 
   .hero-cta {
     gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
   }
 
   .hero-cta .btn {
     width: 100%;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
+    max-width: 320px;
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
   }
 
-  .visual-container {
-    max-width: 300px;
+  .hero-social {
+    justify-content: center;
+  }
+
+  .social-link {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
   }
 
   .particles-container {
-    opacity: 0.2;
+    opacity: 0.15;
   }
 
   .scroll-indicator {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .hero-name {
+    font-size: 2.25rem;
+  }
+
+  .hero-role {
+    font-size: 1.125rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    padding: 0 var(--spacing-sm);
+  }
+
+  .hero-cta .btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+    font-size: 1.125rem;
   }
 }
 

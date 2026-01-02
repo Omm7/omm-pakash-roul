@@ -18,6 +18,13 @@
   cursor: pointer;
 }
 
+/* === MOBILE: HIDE TERMINAL COMPLETELY === */
+@media (max-width: 768px) {
+  .interactive-terminal {
+    display: none !important;
+  }
+}
+
 /* === TERMINAL HEADER === */
 .terminal-header {
   background: rgba(50, 50, 50, 0.98);
@@ -238,142 +245,7 @@
   }
 }
 
-@media (max-width: 768px) {
-  .interactive-terminal {
-    width: 92%;
-    max-width: 92%;
-    height: 230px !important;
-    max-height: 230px !important;
-    border-radius: 8px;
-    margin: 0 auto var(--spacing-lg, 1.5rem) auto;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  }
-
-  .terminal-header {
-    padding: 8px 12px;
-    min-height: 32px;
-  }
-
-  .terminal-button {
-    width: 9px;
-    height: 9px;
-  }
-
-  .terminal-buttons {
-    gap: 5px;
-  }
-
-  .terminal-title {
-    display: none;
-  }
-
-  .terminal-body {
-    padding: 12px 14px !important;
-    min-height: 188px !important;
-    max-height: 188px !important;
-    font-size: 14px !important;
-    line-height: 1.75 !important;
-    overflow: hidden !important;
-  }
-
-  .terminal-line {
-    margin-bottom: 6px;
-  }
-
-  /* Hide lines beyond 4th line on mobile */
-  .terminal-line:nth-child(n+5) {
-    display: none;
-  }
-
-  .terminal-output {
-    margin: 6px 0;
-  }
-
-  .terminal-input input {
-    font-size: 14px;
-    padding: 6px 0;
-  }
-
-  .terminal-prompt {
-    font-size: 14px;
-  }
-
-  /* Remove scrollbar on mobile */
-  .terminal-body::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .terminal-body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .interactive-terminal {
-    width: 94%;
-    max-width: 94%;
-    height: 220px !important;
-    max-height: 220px !important;
-  }
-
-  .terminal-body {
-    padding: 10px 12px !important;
-    min-height: 178px !important;
-    max-height: 178px !important;
-    font-size: 14px !important;
-    line-height: 1.8 !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .interactive-terminal {
-    width: 95%;
-    max-width: 95%;
-    height: 220px !important;
-    max-height: 220px !important;
-    border-radius: 6px;
-  }
-
-  .terminal-header {
-    padding: 7px 10px;
-    min-height: 30px;
-  }
-
-  .terminal-button {
-    width: 8px;
-    height: 8px;
-  }
-
-  .terminal-buttons {
-    gap: 4px;
-  }
-
-  .terminal-body {
-    padding: 10px !important;
-    min-height: 180px !important;
-    max-height: 180px !important;
-    font-size: 13px !important;
-    line-height: 1.75 !important;
-  }
-
-  .terminal-line {
-    margin-bottom: 4px;
-  }
-
-  .terminal-output {
-    margin: 4px 0;
-  }
-
-  .terminal-input input {
-    font-size: 13px;
-    padding: 5px 0;
-  }
-
-  .terminal-prompt {
-    font-size: 13px;
-  }
-}
+/* Terminal hidden on mobile - see top of file */
 
 /* === EXTRA SMALL MOBILE (iPhone SE, etc) === */
 @media (max-width: 375px) {
