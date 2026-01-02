@@ -240,52 +240,108 @@
 
 @media (max-width: 768px) {
   .interactive-terminal {
-    border-radius: 8px;
+    border-radius: 10px;
+    max-width: 95%;
   }
 
   .terminal-body {
-    padding: 16px;
-    min-height: 800px;
-    max-height: 1000px;
-    font-size: 12px;
+    padding: 20px;
+    min-height: 500px;
+    max-height: 600px;
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   .terminal-title {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .terminal-header {
-    padding: 10px 11px;
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .interactive-terminal {
+    max-width: 92%;
+  }
+
+  .terminal-body {
+    padding: 22px 16px;
+    min-height: 450px;
+    max-height: 550px;
+    font-size: 15px;
+    line-height: 1.75;
   }
 }
 
 @media (max-width: 480px) {
   .interactive-terminal {
-    border-radius: 6px;
+    border-radius: 8px;
+    max-width: 90%;
   }
 
   .terminal-header {
-    padding: 9px 10px;
+    padding: 14px 16px;
   }
 
   .terminal-button {
-    width: 11px;
-    height: 11px;
+    width: 13px;
+    height: 13px;
   }
 
   .terminal-buttons {
-    gap: 7px;
+    gap: 9px;
   }
 
   .terminal-body {
-    padding: 14px;
-    min-height: 600px;
-    max-height: 800px;
-    font-size: 11px;
+    padding: 20px 18px;
+    min-height: 400px;
+    max-height: 500px;
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
   }
 
   .terminal-title {
-    font-size: 11px;
+    font-size: 14px;
+  }
+
+  .terminal-output {
+    margin: 16px 0;
+  }
+
+  .terminal-input input {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+
+  .terminal-prompt {
+    font-size: 16px;
+  }
+}
+
+/* === EXTRA SMALL MOBILE (iPhone SE, etc) === */
+@media (max-width: 375px) {
+  .interactive-terminal {
+    max-width: 92%;
+  }
+
+  .terminal-body {
+    padding: 18px 14px;
+    min-height: 350px;
+    max-height: 450px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .terminal-header {
+    padding: 12px 14px;
+  }
+
+  .terminal-button {
+    width: 12px;
+    height: 12px;
   }
 }
 

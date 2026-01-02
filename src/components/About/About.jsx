@@ -76,7 +76,7 @@ const About = () => {
             <div className="profile-image-wrapper">
               <div className="profile-image-border"></div>
               <img
-                src="/assets/omm prakash roul.jpg"
+                src={`${process.env.PUBLIC_URL}/assets/Omm Prakash Roul.jpg`}
                 alt="Omm Prakash Roul"
                 className="profile-image"
               />
