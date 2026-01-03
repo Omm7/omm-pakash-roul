@@ -7,27 +7,60 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState('all');
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cardRotations, setCardRotations] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
+  // Detect if device is mobile/tablet
+  React.useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 1024 || 
+                    ('ontouchstart' in window) || 
+                    (navigator.maxTouchPoints > 0);
+      setIsMobile(mobile);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleMouseMove = (e, cardId) => {
+    // Disable 3D tilt on mobile devices
+    if (isMobile) return;
+    
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
     
-    setHoveredCard(cardId);
-    setMousePosition({ x: rotateX, y: rotateY });
+    // Calculate rotation angles (max ±15 degrees)
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
+    
+    setCardRotations(prev => ({
+      ...prev,
+      [cardId]: { rotateX, rotateY }
+    }));
   };
 
-  const handleMouseLeave = () => {
-    setHoveredCard(null);
-    setMousePosition({ x: 0, y: 0 });
+  const handleMouseEnter = (cardId) => {
+    if (!isMobile) {
+      setHoveredCard(cardId);
+    }
+  };
+
+  const handleMouseLeave = (cardId) => {
+    if (!isMobile) {
+      setHoveredCard(null);
+      setCardRotations(prev => ({
+        ...prev,
+        [cardId]: { rotateX: 0, rotateY: 0 }
+      }));
+    }
   };
 
   const projects = [
@@ -161,47 +194,66 @@ const Projects = () => {
           <motion.div
             className="projects-grid"
             layout
-            style={{ perspective: '1200px' }}
           >
             <AnimatePresence mode="wait">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className={`project-card project-${project.size}`}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={hoveredCard === project.id ? {
-                    opacity: 1,
-                    scale: 1,
-                    rotateX: mousePosition.x,
-                    rotateY: mousePosition.y,
-                    z: 50
-                  } : {
-                    opacity: 1,
-                    scale: 1,
-                    rotateX: 0,
-                    rotateY: 0,
-                    z: 0
-                  }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{
-                    opacity: { duration: 0.4, delay: index * 0.1 },
-                    scale: { duration: 0.4, delay: index * 0.1 },
-                    rotateX: { type: 'spring', stiffness: 100, damping: 20 },
-                    rotateY: { type: 'spring', stiffness: 100, damping: 20 },
-                    z: { type: 'spring', stiffness: 100, damping: 20 }
-                  }}
-                  whileHover={{
-                    y: -12,
-                    scale: 1.02
-                  }}
-                  onMouseMove={(e) => handleMouseMove(e, project.id)}
-                  onMouseLeave={handleMouseLeave}
-                  onClick={() => setSelectedProject(project)}
-                  style={{
-                    transformStyle: 'preserve-3d'
-                  }}
-                >
+              {filteredProjects.map((project, index) => {
+                const rotation = cardRotations[project.id] || { rotateX: 0, rotateY: 0 };
+                const isHovered = hoveredCard === project.id;
+                
+                return (
+                  <motion.div
+                    key={project.id}
+                    className={`project-card project-${project.size}`}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{
+                      opacity: 1,
+                      scale: isHovered && !isMobile ? 1.02 : 1,
+                      rotateX: isMobile ? 0 : rotation.rotateX,
+                      rotateY: isMobile ? 0 : rotation.rotateY,
+                      y: isHovered && !isMobile ? -12 : 0,
+                      z: isHovered && !isMobile ? 50 : 0
+                    }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{
+                      opacity: { duration: 0.4, delay: index * 0.1 },
+                      scale: { 
+                        type: 'spring',
+                        stiffness: 300,
+                        damping: 25
+                      },
+                      rotateX: { 
+                        type: 'spring', 
+                        stiffness: 200, 
+                        damping: 30,
+                        mass: 0.5
+                      },
+                      rotateY: { 
+                        type: 'spring', 
+                        stiffness: 200, 
+                        damping: 30,
+                        mass: 0.5
+                      },
+                      y: {
+                        type: 'spring',
+                        stiffness: 300,
+                        damping: 25
+                      },
+                      z: { 
+                        type: 'spring', 
+                        stiffness: 300, 
+                        damping: 25 
+                      }
+                    }}
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      perspective: '1200px'
+                    }}
+                    onMouseMove={(e) => handleMouseMove(e, project.id)}
+                    onMouseEnter={() => handleMouseEnter(project.id)}
+                    onMouseLeave={() => handleMouseLeave(project.id)}
+                    onClick={() => setSelectedProject(project)}
+                  >
                   <div className="project-image">
                     <img src={project.image} alt={project.title} />
                     <div className="project-overlay">
@@ -260,7 +312,8 @@ const Projects = () => {
                     </div>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </AnimatePresence>
           </motion.div>
         </div>
