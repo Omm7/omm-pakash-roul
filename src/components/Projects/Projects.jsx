@@ -15,9 +15,8 @@ const Projects = () => {
   // Detect if device is mobile/tablet
   React.useEffect(() => {
     const checkMobile = () => {
-      const mobile = window.innerWidth <= 1024 || 
-                    ('ontouchstart' in window) || 
-                    (navigator.maxTouchPoints > 0);
+      // Only consider it mobile if the screen is small, regardless of touch capability
+      const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
     };
     
